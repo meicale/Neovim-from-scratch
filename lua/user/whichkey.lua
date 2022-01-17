@@ -96,6 +96,12 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
+  j = {
+    name = "hop",
+    w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hopword" },
+    l = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hopword" },
+  },
+
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -107,6 +113,7 @@ local mappings = {
 
   g = {
     name = "Git",
+    G = { "<cmd>Git<CR>", "fugitive" },
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
