@@ -98,8 +98,11 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"
 
   -- nvim motion
+--  use "blackCauldron7/surround.nvim" -- need config
+  use "tpope/vim-surround"
+
  -- use "unblevable/quick-scope"
-use {
+  use {
   'phaazon/hop.nvim',
   branch = 'v1', -- optional but strongly recommended
   config = function()
@@ -107,6 +110,9 @@ use {
     require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
   end
 }
+
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
