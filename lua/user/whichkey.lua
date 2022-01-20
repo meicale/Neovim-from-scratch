@@ -113,13 +113,12 @@ local mappings = {
 
   g = {
     name = "Git",
-    G = { "<cmd>Git<CR>", "fugitive" },
+    f = { "<cmd>Git<CR>", "fugitive" },
     d = { "<cmd>Git diff<CR>", "diff" },
     t = { "<cmd>Git commit<CR>", "commit" },
-    r = { "<cmd>Git rebase -i<CR>", "rebase -i" },
+    e = { "<cmd>Git rebase -i<CR>", "rebase -i" },
     h = { "<cmd>diffget //3<CR>", "keep_right" },
     g = { "<cmd>diffget //2<CR>", "keep_left" },
-    L = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     m = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
