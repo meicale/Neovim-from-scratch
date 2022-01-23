@@ -111,6 +111,9 @@ return packer.startup(function(use)
   end
 }
 
+  -- remote development
+  use "jamestthompson3/nvim-remote-containers"
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim
