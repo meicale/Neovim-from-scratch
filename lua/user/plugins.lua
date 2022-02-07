@@ -111,6 +111,12 @@ return packer.startup(function(use)
   end
 }
 
+-- Orgmode in nvim 
+  use {'nvim-orgmode/orgmode', config = function()
+          require('orgmode').setup{}
+  end
+  }
+
   -- remote development
   use "jamestthompson3/nvim-remote-containers"
 
