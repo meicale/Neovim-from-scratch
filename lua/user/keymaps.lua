@@ -7,6 +7,8 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.surround_prefix = "s"
@@ -22,7 +24,7 @@ vim.g.surround_prefix = "s"
 
 -- Normal --
 -- Better window navigation
--- keymap("n", "<C-h>", "<C-w>h", opts) --This keymap just cannot work. May caused by mobaxtertatus .
+-- keymap("n", "<C-h>", "<C-w>h", opts) --This keymap just cannot work. May caused by mobaxterm.
 keymap("n", "<C-g>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
