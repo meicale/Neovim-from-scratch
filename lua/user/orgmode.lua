@@ -5,6 +5,6 @@ if not orgmode_status_ok then
 end
 
 orgmode.setup({
-  org_agenda_files = { '~/workspace/orgs/**/*'},
-  org_default_notes_file = '~/workspace/orgs/refile.org',
+  org_agenda_files = { '/home/guanghua/org/**/*'},
+  org_default_notes_file = '/home/guanghua/org/refile.org',
 })

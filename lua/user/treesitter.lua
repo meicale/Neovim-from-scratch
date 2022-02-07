@@ -6,8 +6,8 @@ end
 configs.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 --  ensure_installed = {'org'}, -- Or run :TSUpdate org
-  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`) ignore_install = { "jsonc", "fusion" }, -- List of parsers to ignore installing
-  ignore_install = {},
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`) ignore_install 
+  ignore_install = { "jsonc", "fusion" }, -- List of parsers to ignore installing
   -- ignore_install = {"jsonc", "fusion"},
   autopairs = {
     enable = true,
