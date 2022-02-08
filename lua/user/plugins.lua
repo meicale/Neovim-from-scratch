@@ -101,7 +101,7 @@ return packer.startup(function(use)
 --  use "blackCauldron7/surround.nvim" -- need config
   use "tpope/vim-surround"
 
- -- use "unblevable/quick-scope"
+  use "unblevable/quick-scope"
   use {
   'phaazon/hop.nvim',
   branch = 'v1', -- optional but strongly recommended

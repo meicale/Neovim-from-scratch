@@ -11,8 +11,12 @@ keymap("", "<Space>", "<Nop>", opts)
 -- vim.g.maplocalleader = " "
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 vim.g.surround_prefix = "s"
 -- vim.g.surround_load_autogroups = true
+
+vim.g.qs_lazy_highlightdt = 0
+vim.g.qs_delay = 500
 
 -- Modes
 --   normal_mode = "n",

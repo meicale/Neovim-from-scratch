@@ -99,6 +99,7 @@ local mappings = {
     name = "hop",
     w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hopword" },
     l = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hopline" },
+    q = { "<cmd>QuickScopeToggle<CR>", "Toggle QuickScope"}
   },
 
   o = {
