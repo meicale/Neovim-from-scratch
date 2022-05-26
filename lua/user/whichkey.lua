@@ -80,10 +80,50 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  ["b"] = {
+  ["B"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+	d = {
+		name = "Debug",
+		R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+		E = {
+			"<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>",
+			"Evaluate Input",
+		},
+		C = {
+			"<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>",
+			"Conditional Breakpoint",
+		},
+		U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+		b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+		D = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+		e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+		g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+		h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
+		S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+		p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
+		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+		s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+		d = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+		x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+		u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+		m = { "<cmd>lua require'telescope'.extensions.dap.commands{}<cr>", "Commands" },
+		n = {
+			"<cmd>require'telescope'.extensions.dap.configurations{}<cr>",
+			"Configurations",
+		},
+		l = {
+			"<cmd>lua require'telescope'.extensions.dap.list_breakpoints{}<cr>",
+			"List breakpoints",
+		},
+		v = { "<cmd>lua require'telescope'.extensions.dap.variables{}<cr>", "Variables" },
+		f = { "<cmd>lua require'telescope'.extensions.dap.frames{}<cr>", "Frames" },
+	},
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -171,7 +211,22 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
-  t = {
+	t = {
+		name = "Test",
+		a = { "<cmd>Ultest<cr>", "TestAll" },
+		s = { "<cmd>UltestSummary!<cr>", "ToggleSummary" },
+		c = { "<cmd>UltestClear<cr>", "ClearTest" },
+		n = { "<cmd>UltestNearest<cr>", "TestNearest" },
+		l = { "<cmd>UltestLast<cr>", "TestLast" },
+		d = { "<cmd>UltestDebug<cr>", "DebugFile" },
+		f = { "<cmd>UltestDebugNearest<cr>", "DebugNearest" },
+		t = { "<cmd>UltestAttach<cr>", "Attach" },
+		-- j = { "<cmd>lua require 'ultest'.ultest-next-fail<cr>", "NextFail" },
+		-- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+		u = { "<cmd>MundoToggle<cr>", "Views" },
+		v = { "<cmd>Vista!!<cr>", "Views" },
+	},
+  T = {
     name = "Terminal",
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },

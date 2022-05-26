@@ -99,16 +99,79 @@ return packer.startup(function(use)
         require'nvim-tmux-navigation'.setup {
             disable_when_zoomed = true, -- defaults to false
             keybindings = {
-                left = "<C-h>",
-                down = "<C-j>",
-                up = "<C-k>",
-                right = "<C-l>",
-                last_active = "<C-\\>",
-                next = "<C-Space>",
+                left       = "<M-h>",
+                down       = "<M-j>",
+                up         = "<M-k>",
+                right      = "<M-l>",
+                last_active= "<M-Space>",
+                next       = "<M-\\>",
             }
         }
     end
   }
+
+  use 'cjrh/vim-conda'
+	-- asyncrun
+	use("skywind3000/asyncrun.vim")
+	use("skywind3000/asynctasks.vim")
+
+	-- Test in neovim
+	use("preservim/vimux")
+	use("roxma/nvim-yarp")
+	use("roxma/vim-hug-neovim-rpc")
+	use("vim-test/vim-test")
+	use({
+		"rcarriga/vim-ultest",
+		config = "require('user.dap.ultest').post()",
+		requires = { "vim-test/vim-test" },
+		run = ":UpdateRemotePlugins",
+	})
+	-- Debugging
+
+	use({
+		"mfussenegger/nvim-dap",
+		-- opt = true,
+		event = "BufReadPre",
+		module = { "dap" },
+		-- wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+		requires = {
+			"Pocco81/DAPInstall.nvim",
+			-- "theHamsta/nvim-dap-virtual-text",
+			-- "rcarriga/nvim-dap-ui",
+			-- "mfussenegger/nvim-dap-python",
+			"nvim-telescope/telescope-dap.nvim",
+			-- { "leoluz/nvim-dap-go", module = "dap-go" },
+			{ "jbyuki/one-small-step-for-vimkind", module = "osv" },
+		},
+		config = function()
+			require("dap").setup()
+      -- require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { cppdbg = {'c', 'cpp'} , python = 'py'})
+		end,
+	})
+
+	-- 为代码调试提供内联文本
+	use({
+		"theHamsta/nvim-dap-virtual-text",
+		requires = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			require("user.dap.nvim-dap-virtual-text")
+		end,
+	})
+
+	-- 为代码调试提供 UI 界面
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = {
+			"mfussenegger/nvim-dap",
+		},
+		config = function()
+			require("user.dap.nvim-dap-ui")
+		end,
+	})
+
+	use("ojroques/vim-oscyank")
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

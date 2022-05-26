@@ -10,6 +10,7 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- vim.g.python3_host_prog = "/home/anaconda3/envs/dap/bin/python"
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
