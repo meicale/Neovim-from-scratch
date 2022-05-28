@@ -84,6 +84,16 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+
+  b = {
+		name = "Trouble",
+		x = { "<cmd>TroubleToggle<cr>", "TroubleToggle" },
+		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+		d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
+		q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+		l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+	},
+
 	d = {
 		name = "Debug",
 		R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
@@ -124,6 +134,7 @@ local mappings = {
 		v = { "<cmd>lua require'telescope'.extensions.dap.variables{}<cr>", "Variables" },
 		f = { "<cmd>lua require'telescope'.extensions.dap.frames{}<cr>", "Frames" },
 	},
+
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -145,28 +156,43 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
-  g = {
-    name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-      "Undo Stage Hunk",
-    },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
-      "Diff",
-    },
-  },
+	g = {
+		name = "Git",
+    z = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		a = {
+			"<cmd>lua require 'telescope'.extensions.git_worktree.create_git_worktree()<CR>",
+			"Add worktree",
+		},
+		f = { "<cmd>Git<CR>", "fugitive" },
+		d = { "<cmd>Git diff<CR>", "diff" },
+		t = { "<cmd>Git commit<CR>", "commit" },
+		e = { "<cmd>Git rebase -i<CR>", "rebase -i" },
+		h = { "<cmd>diffget //3<CR>", "keep_right" },
+		g = { "<cmd>diffget //2<CR>", "keep_left" },
+		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+		k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+		m = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Buffer" },
+		w = {
+			"<cmd>lua require 'telescope'.extensions.git_worktree.git_worktrees()<CR>",
+			"Del/Switch worktrees",
+		},
+		u = {
+			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+			"Undo Stage Hunk",
+		},
+		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		--    d = {
+		--      "<cmd>Gitsigns diffthis HEAD<cr>",
+		--      "Diff",
+		--    },
+	},
 
   l = {
     name = "LSP",
@@ -199,6 +225,7 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -221,11 +248,13 @@ local mappings = {
 		d = { "<cmd>UltestDebug<cr>", "DebugFile" },
 		f = { "<cmd>UltestDebugNearest<cr>", "DebugNearest" },
 		t = { "<cmd>UltestAttach<cr>", "Attach" },
+		q = { "<cmd>TestNearest<cr>", "Test in quickfix" },
 		-- j = { "<cmd>lua require 'ultest'.ultest-next-fail<cr>", "NextFail" },
 		-- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		u = { "<cmd>MundoToggle<cr>", "Views" },
 		v = { "<cmd>Vista!!<cr>", "Views" },
 	},
+
   T = {
     name = "Terminal",
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
@@ -236,6 +265,33 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+	j = {
+		name = "harpoon&hop",
+		w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hop Word" },
+		r = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hop Row" },
+		f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Find" },
+		q = { "<cmd>QuickScopeToggle<CR>", "Toggle QuickScope" },
+
+		h = { "<cmd>lua require 'harpoon.mark'.add_file()<cr>", "Harpoon Highlight" },
+		m = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Harpoon Menu" },
+		j = { "<cmd>lua require 'harpoon.ui'.nav_next()<cr>", "Next File" },
+		k = { "<cmd>lua require 'harpoon.ui'.nav_prev()<cr>", "Prev File" },
+		g = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "First File" },
+		["1"] = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "1st File" },
+		["2"] = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "2nd File" },
+		["3"] = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "3rd File" },
+		["4"] = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "4th File" },
+		["5"] = { "<cmd>lua require 'harpoon.ui'.nav_file(5)<cr>", "5th File" },
+		["6"] = { "<cmd>lua require 'harpoon.ui'.nav_file(6)<cr>", "6th File" },
+		["7"] = { "<cmd>lua require 'harpoon.ui'.nav_file(7)<cr>", "7th File" },
+		["8"] = { "<cmd>lua require 'harpoon.ui'.nav_file(8)<cr>", "8th File" },
+		["9"] = { "<cmd>lua require 'harpoon.ui'.nav_file(9)<cr>", "9th File" },
+		-- this just create a new tmux Terminal.
+		v = { "<cmd>Telescope harpoon marks<cr>", "View marks" },
+		t = { "<cmd>lua require 'harpoon.tmux'.gotoTerminal(1)<cr>", "Terminal" },
+		-- this doesn't work when using a down pane of the same window.
+	},
 }
 
 which_key.setup(setup)

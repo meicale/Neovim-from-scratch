@@ -3,7 +3,7 @@ if not status_ok then
   print("ultest is not ok!")
   return
 end
-print("config ultest")
+-- print("config ultest")
 -- this is for ultest
 vim.cmd [[
     nmap ]t <Plug>(ultest-next-fail)

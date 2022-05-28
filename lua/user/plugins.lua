@@ -62,6 +62,9 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+	use("folke/tokyonight.nvim")
+	use("sainnhe/gruvbox-material")
+  use 'shaunsingh/moonlight.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -83,6 +86,8 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+	use({ "nvim-telescope/telescope-hop.nvim" })
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
   -- Treesitter
   use {
@@ -93,7 +98,34 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use("ThePrimeagen/git-worktree.nvim")
+	use("tpope/vim-fugitive")
 
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+
+	-- nvim motion
+	--  use "blackCauldron7/surround.nvim" -- need config
+	-- use("tpope/vim-surround")
+  use "machakann/vim-sandwich"
+	use("unblevable/quick-scope")
+	use({
+		"phaazon/hop.nvim",
+		branch = "master", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	})
   -- Tmux navigation
   use { 'alexghergh/nvim-tmux-navigation', config = function()
         require'nvim-tmux-navigation'.setup {
@@ -110,7 +142,8 @@ return packer.startup(function(use)
     end
   }
 
-  use 'cjrh/vim-conda'
+	use("ThePrimeagen/harpoon")
+  -- use 'cjrh/vim-conda'
 	-- asyncrun
 	use("skywind3000/asyncrun.vim")
 	use("skywind3000/asynctasks.vim")
