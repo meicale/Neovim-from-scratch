@@ -60,7 +60,7 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
 	use("folke/tokyonight.nvim")
 	use("sainnhe/gruvbox-material")
@@ -88,6 +88,18 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
 	use({ "nvim-telescope/telescope-hop.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      {'tami5/sqlite.lua', module = 'sqlite'},
+      -- you'll need at least one of these
+      {'nvim-telescope/telescope.nvim'},
+      -- {'ibhagwan/fzf-lua'},
+    },
+  }
+	-- tags and symbles viewer.
+	use("liuchengxu/vista.vim")
+	use("simnalamburt/vim-mundo")
 
   -- Treesitter
   use {
@@ -95,10 +107,36 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  -- better find the object using "."
+  use {'RRethy/nvim-treesitter-textsubjects'}
+  -- highlight the textobject like hop.
+  use {
+    "mfussenegger/nvim-ts-hint-textobject",
+    config =function ()
+      -- require("tsht").setup { }
+      -- require("tsht").config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
+    end,
+  }
+	use("p00f/nvim-ts-rainbow")
+	-- Location information using by status line
+	use({
+		"SmiteshP/nvim-gps",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
+	-- TODO: highlight etc.
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup ()
+    end,
+  }
+	-- use("tpope/vim-surround")
+  use "machakann/vim-sandwich"
 
-  -- Git
-  use "lewis6991/gitsigns.nvim"
+  -- Git helper
   use("ThePrimeagen/git-worktree.nvim")
+  use "lewis6991/gitsigns.nvim"
 	use("tpope/vim-fugitive")
 
 	use({
@@ -113,10 +151,8 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- nvim motion
-	--  use "blackCauldron7/surround.nvim" -- need config
-	-- use("tpope/vim-surround")
-  use "machakann/vim-sandwich"
+	-- MOTION
+	-- In nvim buffer in sight
 	use("unblevable/quick-scope")
 	use({
 		"phaazon/hop.nvim",
@@ -126,8 +162,11 @@ return packer.startup(function(use)
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
 	})
-  -- Tmux navigation
-  use { 'alexghergh/nvim-tmux-navigation', config = function()
+	-- Between buffer/file and terminal
+	use("ThePrimeagen/harpoon")
+  -- Between Neovim and Tmux navigation
+  use { 'alexghergh/nvim-tmux-navigation',
+    config = function()
         require'nvim-tmux-navigation'.setup {
             disable_when_zoomed = true, -- defaults to false
             keybindings = {
@@ -142,8 +181,6 @@ return packer.startup(function(use)
     end
   }
 
-	use("ThePrimeagen/harpoon")
-  -- use 'cjrh/vim-conda'
 	-- asyncrun
 	use("skywind3000/asyncrun.vim")
 	use("skywind3000/asynctasks.vim")
@@ -159,8 +196,8 @@ return packer.startup(function(use)
 		requires = { "vim-test/vim-test" },
 		run = ":UpdateRemotePlugins",
 	})
-	-- Debugging
 
+	-- Debugging
 	use({
 		"mfussenegger/nvim-dap",
 		-- opt = true,
@@ -181,8 +218,7 @@ return packer.startup(function(use)
       -- require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { cppdbg = {'c', 'cpp'} , python = 'py'})
 		end,
 	})
-
-	-- 为代码调试提供内联文本
+	-- debug inline text
 	use({
 		"theHamsta/nvim-dap-virtual-text",
 		requires = {
@@ -192,8 +228,7 @@ return packer.startup(function(use)
 			require("user.dap.nvim-dap-virtual-text")
 		end,
 	})
-
-	-- 为代码调试提供 UI 界面
+	-- debug UI
 	use({
 		"rcarriga/nvim-dap-ui",
 		requires = {
@@ -205,6 +240,43 @@ return packer.startup(function(use)
 	})
 
 	use("ojroques/vim-oscyank")
+	-- -- better matched information
+	-- use({ "kevinhwang91/nvim-hlslens" })
+	-- -- better * motions
+	-- use("haya14busa/vim-asterisk")
+
+	-- -- visual-multi
+	-- use({ "mg979/vim-visual-multi", branch = "master" })
+	--
+	-- -- refactoring
+	-- use({
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	requires = {
+	-- 		{ "nvim-lua/plenary.nvim" },
+	-- 		{ "nvim-treesitter/nvim-treesitter" },
+	-- 	},
+	-- })
+
+	-- -- Orgmode in nvim
+	-- use({
+	-- 	"nvim-orgmode/orgmode",
+	-- 	config = function()
+	-- 		-- require('orgmode').setup_ts_grammer()
+	-- 		-- require('orgmode').setup{}
+	-- 	end,
+	-- })
+
+	-- --adventurous wildmenu
+	-- use({
+	-- 	"gelguy/wilder.nvim",
+	-- 	config = function()
+	-- 		-- config goes here
+	-- 	end,
+	-- })
+
+	-- -- remote development
+	-- use("jamestthompson3/nvim-remote-containers")
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

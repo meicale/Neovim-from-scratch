@@ -78,8 +78,16 @@ vim.api.nvim_set_keymap('o', 'jr', "<cmd> lua require'hop'.hint_lines({ hint_pos
 vim.api.nvim_set_keymap('n', 'jf', "<cmd> lua require'hop'.hint_patterns({ hint_position = require'hop.hint'.HintPosition.END })<cr>", {})
 vim.api.nvim_set_keymap('v', 'jf', "<cmd> lua require'hop'.hint_patterns({ hint_position = require'hop.hint'.HintPosition.END })<cr>", {})
 vim.api.nvim_set_keymap('o', 'jf', "<cmd> lua require'hop'.hint_patterns({ hint_position = require'hop.hint'.HintPosition.END, inclusive_jump = true })<cr>", {})
-
+-- https://github.com/mfussenegger/nvim-treehopper
+vim.api.nvim_set_keymap('n', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
+vim.api.nvim_set_keymap('v', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
+vim.api.nvim_set_keymap('o', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
+-- https://github.com/AckslD/nvim-neoclip.lua
+vim.api.nvim_set_keymap('n', 'gy', "<cmd> Telescope neoclip<cr>", {})
+vim.api.nvim_set_keymap('v', 'gy', "<cmd> Telescope neoclip<cr>", {})
+-- The visual_mode shortcut may conflict to use jk or jj to back to normal_mode.
 vim.cmd [[
+" https://github.com/machakann/vim-sandwich
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 ]]
 
@@ -89,4 +97,3 @@ let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-

@@ -5,6 +5,7 @@ require "user.colorscheme"
 require "user.cmp"
 require "user.lsp"
 require "user.telescope"
+require "user.neoclip"
 require "user.treesitter"
 require "user.autopairs"
 require "user.comment"
@@ -28,4 +29,5 @@ require("user.vim-ultest")
 require("user.nvim-dap")
 require("user.asyncrun")
 require("user.git-worktree")
+require("user.nvim-gps")
 -- require("user.refactoring")
