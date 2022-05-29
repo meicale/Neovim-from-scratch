@@ -46,7 +46,6 @@ vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
--- " let g:python3_host_prog = '/home/anaconda3/envs/aacd/bin/python'
 vim.cmd [[
 let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/home/anaconda3/envs/aacd/bin/python'
@@ -61,3 +60,9 @@ let g:ultest_use_pty = 1
 let test#python#runner = 'pytest'
 " Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose', 'mamba', and Python's built-in unittest as 'pyunit'
 ]]
+
+-- https://github.com/skywind3000/asyncrun.vim
+vim.cmd([[
+let g:asyncrun_open = 6
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
+]])

@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
+-- local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -10,7 +10,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- vim.g.python3_host_prog = "/home/anaconda3/envs/dap/bin/python"
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -84,8 +83,22 @@ vim.api.nvim_set_keymap('v', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
 vim.api.nvim_set_keymap('o', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
 -- https://github.com/AckslD/nvim-neoclip.lua
 vim.api.nvim_set_keymap('n', 'gy', "<cmd> Telescope neoclip<cr>", {})
-vim.api.nvim_set_keymap('v', 'gy', "<cmd> Telescope neoclip<cr>", {})
 -- The visual_mode shortcut may conflict to use jk or jj to back to normal_mode.
+vim.api.nvim_set_keymap('v', 'gy', "<cmd> Telescope neoclip<cr>", {})
+
+-- https://github.com/ThePrimeagen/refactoring.nvim
+-- Remaps for the refactoring operations currently offered by the plugin
+vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+-- Extract block doesn't need visual mode
+vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
+-- Inline variable can also pick up the identifier currently under the cursor without visual mode
+vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+
+
 vim.cmd [[
 " https://github.com/machakann/vim-sandwich
 let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)

@@ -226,6 +226,16 @@ local mappings = {
     },
   },
 
+	r = {
+		name = "Compile&Run",
+		-- Need .tasks file configed in the project directory.
+		r = { "<cmd>AsyncTask file-run<cr>", "Run File" },
+		b = { "<cmd>AsyncTask file-build<cr>", "Build File" },
+		-- Need Makefile configed too in the project directory.
+		a = { "<cmd>AsyncTask project-build<cr>", "Build Projects" },
+		t = { "<cmd>AsyncTask project-run<cr>", "Run Projects" },
+	},
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -270,18 +280,17 @@ local mappings = {
 		name = "harpoon&hop",
 		w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hop Word" },
 		r = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hop Row" },
-		f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Find" },
+		f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Patterns" },
 		q = { "<cmd>QuickScopeToggle<CR>", "Toggle QuickScope" },
 
 		h = { "<cmd>lua require 'harpoon.mark'.add_file()<cr>", "Harpoon Highlight" },
-		m = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Harpoon Menu" },
+		l = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Harpoon List" },
 		j = { "<cmd>lua require 'harpoon.ui'.nav_next()<cr>", "Next File" },
 		k = { "<cmd>lua require 'harpoon.ui'.nav_prev()<cr>", "Prev File" },
 		g = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "First File" },
-		["1"] = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "1st File" },
-		["2"] = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "2nd File" },
-		["3"] = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "3rd File" },
-		["4"] = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "4th File" },
+		a = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "2nd File" },
+		s = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "3rd File" },
+		d = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "4th File" },
 		["5"] = { "<cmd>lua require 'harpoon.ui'.nav_file(5)<cr>", "5th File" },
 		["6"] = { "<cmd>lua require 'harpoon.ui'.nav_file(6)<cr>", "6th File" },
 		["7"] = { "<cmd>lua require 'harpoon.ui'.nav_file(7)<cr>", "7th File" },

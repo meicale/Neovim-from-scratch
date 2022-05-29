@@ -97,9 +97,19 @@ return packer.startup(function(use)
       -- {'ibhagwan/fzf-lua'},
     },
   }
-	-- tags and symbles viewer.
-	use("liuchengxu/vista.vim")
-	use("simnalamburt/vim-mundo")
+
+	-- something like telescope
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
   -- Treesitter
   use {
@@ -123,7 +133,6 @@ return packer.startup(function(use)
 		"SmiteshP/nvim-gps",
 		requires = "nvim-treesitter/nvim-treesitter",
 	})
-	-- TODO: highlight etc.
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
@@ -138,18 +147,6 @@ return packer.startup(function(use)
   use("ThePrimeagen/git-worktree.nvim")
   use "lewis6991/gitsigns.nvim"
 	use("tpope/vim-fugitive")
-
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
 
 	-- MOTION
 	-- In nvim buffer in sight
@@ -239,23 +236,28 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- refactoring -- Under test, not quite useful
+	use({
+		"ThePrimeagen/refactoring.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	})
+
 	use("ojroques/vim-oscyank")
+
+	-- -- tags and symbles viewer.
+	-- use("liuchengxu/vista.vim")
+	-- use("simnalamburt/vim-mundo")
+
+	-- -- Multi-operations
 	-- -- better matched information
 	-- use({ "kevinhwang91/nvim-hlslens" })
 	-- -- better * motions
 	-- use("haya14busa/vim-asterisk")
-
 	-- -- visual-multi
-	-- use({ "mg979/vim-visual-multi", branch = "master" })
-	--
-	-- -- refactoring
-	-- use({
-	-- 	"ThePrimeagen/refactoring.nvim",
-	-- 	requires = {
-	-- 		{ "nvim-lua/plenary.nvim" },
-	-- 		{ "nvim-treesitter/nvim-treesitter" },
-	-- 	},
-	-- })
+	-- -- use({ "mg979/vim-visual-multi", branch = "master" })
 
 	-- -- Orgmode in nvim
 	-- use({
