@@ -20,15 +20,15 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
-require("user.harpoon")
-require("user.hop")
-require("user.quickscope")
-require("user.fugitive")
-require("user.vim-test")
-require("user.vim-ultest")
-require("user.nvim-dap")
-require("user.asyncrun")
-require("user.git-worktree")
-require("user.nvim-gps")
-require("user.refactoring")
-require("user.asyncrun")
+require "user.harpoon"
+require "user.hop"
+require "user.quickscope"
+require "user.fugitive"
+require "user.vim-test"
+require "user.vim-ultest"
+require "user.nvim-dap"
+require "user.asyncrun"
+require "user.git-worktree"
+require "user.nvim-gps"
+require "user.refactoring"
+require "user.asyncrun"

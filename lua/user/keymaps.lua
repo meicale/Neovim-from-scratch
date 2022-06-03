@@ -97,7 +97,38 @@ vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').re
 vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
 -- Inline variable can also pick up the identifier currently under the cursor without visual mode
 vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+-- zoom and rebalance the splites of nvim
+vim.api.nvim_set_keymap("n", "gm", [[ <Cmd>wincmd |<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "gn", [[ <Cmd>wincmd =<cr>]], {noremap = true, silent = true, expr = false})
 
+vim.cmd [[ 
+" https://github.com/preservim/vimux/issues/136
+function! VimuxSlime()
+  call VimuxSendText(@v)
+  call VimuxSendKeys("Enter")
+endfunction
+ " If text is selected, save it in the v buffer and send that buffer it to tmux
+ vmap ru "vy :call VimuxSlime()<CR>
+" https://github.com/preservim/vimux/blob/master/doc/vimux.txt
+ " Open tmux pane runner
+ map ro :VimuxOpenRunner<CR>
+ " Prompt python command to run
+ map rp :VimuxRunCommand("python") <CR>
+ " Prompt for a command to run
+ map rr :VimuxPromptCommand<CR>
+ " Run last command executed by VimuxRunCommand
+ map rl :VimuxRunLastCommand<CR>
+ " Inspect runner pane
+ map ri :VimuxInspectRunner<CR>
+ " Close vim tmux runner opened by VimRunCommand
+ map rq :VimuxCloseRunner<CR>
+ " Interrupt any command running in the runner pane
+ map rx :VimuxInterruptRunner<CR>
+ " Zoom the runner pane (use <bind-key> z to restore runner pane)
+ map rm :call VimuxZoomRunner()<CR>
+ " Clear the terminal screen of the runner pane.
+ map rc :VimuxClearTerminalScreen<CR>
+]]
 
 vim.cmd [[
 " https://github.com/machakann/vim-sandwich

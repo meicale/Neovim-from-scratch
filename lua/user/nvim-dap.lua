@@ -36,6 +36,7 @@ dap.setup = function ()
             -- args = {"--input_onnx", "../tests/test_models/simp_dbnet_rn18_ops13_fp32.onnx", "--batch_size", "1", "--data_type", "fp16", "--chip_config", "../configs/dorado.yaml"},
             pythonPath = function()
                 -- return vim.g.python3_host_prog
+                -- return "/home/anaconda3/envs/aacd/bin/python"
                 return "/home/anaconda3/envs/aacd/bin/python"
             end
         }
