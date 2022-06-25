@@ -67,6 +67,14 @@ let test#project_root = "./tests/test_ops"
 
 ]]
 
+
+-- auto highlight other uses of current word under cursor.
+vim.cmd [[
+  augroup illuminate_augroup
+      autocmd!
+      autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+  augroup END
+]]
 -- https://github.com/skywind3000/asyncrun.vim
 vim.cmd([[
 let g:asyncrun_open = 24
