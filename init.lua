@@ -31,4 +31,5 @@ require "user.asyncrun"
 require "user.git-worktree"
 require "user.nvim-gps"
 require "user.refactoring"
-require "user.asyncrun"
+require "user.illuminate"
+

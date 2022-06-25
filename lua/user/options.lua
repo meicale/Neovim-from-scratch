@@ -17,7 +17,7 @@ local options = {
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
   termguicolors = true,                    -- set term gui colors (most terminals support this)
-  timeoutlen = 100,                        -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 170,                        -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
   updatetime = 300,                        -- faster completion (4000ms default)
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
@@ -51,7 +51,7 @@ let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_prog = '/home/anaconda3/envs/aacd/bin/python'
 let test#strategy = {
   \ 'nearest': 'asyncrun',
-  \ 'file':    'asyncrun',
+  \ 'file':    'basic',
   \ 'suite':   'basic',
 \}
 let test#neovim#term_position = "belowright"
@@ -59,10 +59,16 @@ let g:test#preserve_screen = 1
 let g:ultest_use_pty = 1
 let test#python#runner = 'pytest'
 " Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose', 'mamba', and Python's built-in unittest as 'pyunit'
+let test#python#pytest#options = "--color=yes"
+let test#javascript#jest#options = "--color=always"
+let test#project_root = "./tests/test_ops" 
+" This is just for aacd project
+" https://github.com/vim-test/vim-test  # Working directory
+
 ]]
 
 -- https://github.com/skywind3000/asyncrun.vim
 vim.cmd([[
-let g:asyncrun_open = 6
+let g:asyncrun_open = 24
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 ]])
