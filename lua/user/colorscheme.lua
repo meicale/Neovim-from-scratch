@@ -9,7 +9,10 @@ try
   " colorscheme moonlight
   " The best colorscheme gruvbox.
  " For dark version.
+ colorscheme gruvbox-material
  set background=dark
+ set background=dark
+ highlight Normal guibg=None ctermbg=None
  " For light version.
  " set background=light
  " Set contrast.
@@ -18,7 +21,6 @@ try
  let g:gruvbox_material_background = 'hard'
  " For better performance
  let g:gruvbox_material_better_performance = 1
- colorscheme gruvbox-material
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

@@ -48,7 +48,7 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 
 vim.cmd [[
 let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/home/anaconda3/envs/aacd/bin/python'
+let g:python3_host_prog = '/home/guanghua/.conda/envs/aacd/bin/python'
 let test#strategy = {
   \ 'nearest': 'asyncrun',
   \ 'file':    'basic',
@@ -61,13 +61,12 @@ let test#python#runner = 'pytest'
 " Runners available are 'pytest', 'nose', 'nose2', 'djangotest', 'djangonose', 'mamba', and Python's built-in unittest as 'pyunit'
 let test#python#pytest#options = "--color=yes"
 let test#javascript#jest#options = "--color=always"
-let test#project_root = "./tests/test_ops" 
+" let test#project_root = "./tests/test_ops" 
+let test#project_root = "./tests/test_training_ops" 
 " This is just for aacd project
 " https://github.com/vim-test/vim-test  # Working directory
 
 ]]
-
-
 -- auto highlight other uses of current word under cursor.
 vim.cmd [[
   augroup illuminate_augroup
@@ -75,8 +74,13 @@ vim.cmd [[
       autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
   augroup END
 ]]
+
+vim.cmd([[
+  let g:ultest_deprecation_notice = 0
+]])
+
 -- https://github.com/skywind3000/asyncrun.vim
 vim.cmd([[
-let g:asyncrun_open = 24
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
+  let g:asyncrun_open = 24
+  let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 ]])
