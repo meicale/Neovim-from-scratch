@@ -198,13 +198,13 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
-      "Document Diagnostics",
+      "<cmd>Telescope diagnostics<cr>",
+      "Diagnostics",
     },
-    w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-      "Workspace Diagnostics",
-    },
+    -- w = {
+    --   "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+    --   "Workspace Diagnostics",
+    -- },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
@@ -217,7 +217,7 @@ local mappings = {
       "Prev Diagnostic",
     },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
+    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Loclist" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     S = {
@@ -258,7 +258,8 @@ local mappings = {
 		d = { "<cmd>UltestDebug<cr>", "DebugFile" },
 		f = { "<cmd>UltestDebugNearest<cr>", "DebugNearest" },
 		t = { "<cmd>UltestAttach<cr>", "Attach" },
-		q = { "<cmd>TestNearest<cr>", "Test in quickfix" },
+		q = { "<cmd>Telescope quickfix<cr>", "Quickfix to Telescope" },
+		h = { "<cmd>Telescope loclist<cr>", "loclist to Telescope" },
 		-- j = { "<cmd>lua require 'ultest'.ultest-next-fail<cr>", "NextFail" },
 		-- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		u = { "<cmd>MundoToggle<cr>", "Views" },

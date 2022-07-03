@@ -99,7 +99,7 @@ vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').r
 vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
 -- zoom and rebalance the splites of nvim
 vim.api.nvim_set_keymap("n", "gm", [[ <Cmd>wincmd |<cr>]], {noremap = true, silent = true, expr = false})
-vim.api.nvim_set_keymap("n", "gn", [[ <Cmd>wincmd =<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "gM", [[ <Cmd>wincmd =<cr>]], {noremap = true, silent = true, expr = false})
 
 vim.cmd [[ 
 " https://github.com/preservim/vimux/issues/136
