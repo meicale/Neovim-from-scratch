@@ -54,7 +54,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
   end
@@ -84,12 +84,12 @@ local function lsp_keymaps(bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-  M.on_attach = function(client, bufnr)
-    if client.name == "tsserver" then
-      client.resolved_capabilities.document_formatting = false
-    end
-    lsp_keymaps(bufnr)
-    lsp_highlight_document(client)
+M.on_attach = function(client, bufnr)
+  if client.name == "tsserver" then
+    client.resolved_capabilities.document_formatting = false
+  end
+  lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
 
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
