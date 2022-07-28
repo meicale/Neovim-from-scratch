@@ -3,6 +3,34 @@ if not status_ok then
   return
 end
 
+function _PYTHON_TEST()
+  vim.cmd([[
+    compiler pytest
+    AsyncTask file-test
+  ]])
+end
+
+function _MODEL_PERF()
+  vim.cmd([[
+    compiler python
+    AsyncTask model-perf 
+  ]])
+end
+
+function _PYTHON_DEV()
+  vim.cmd([[
+    compiler python
+    AsyncTask file-dev
+  ]])
+end
+
+function _PYTHON_GO()
+  vim.cmd([[
+    compiler python
+    AsyncTask file-go
+  ]])
+end
+
 local setup = {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -87,7 +115,7 @@ local mappings = {
 
   b = {
 		name = "Trouble",
-		x = { "<cmd>TroubleToggle<cr>", "TroubleToggle" },
+		b = { "<cmd>TroubleToggle<cr>", "TroubleToggle" },
 		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
 		d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document Diagnostics" },
 		q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
@@ -165,6 +193,7 @@ local mappings = {
 		},
 		f = { "<cmd>Git<CR>", "fugitive" },
 		d = { "<cmd>Git diff<CR>", "diff" },
+		["3"] = { "<cmd>Gvdiffsplit！<CR>", "conflicts 3-way" },
 		t = { "<cmd>Git commit<CR>", "commit" },
 		e = { "<cmd>Git rebase -i<CR>", "rebase -i" },
 		h = { "<cmd>diffget //3<CR>", "keep_right" },
@@ -229,11 +258,20 @@ local mappings = {
 	r = {
 		name = "Compile&Run",
 		-- Need .tasks file configed in the project directory.
-		r = { "<cmd>AsyncTask file-run<cr>", "Run File" },
+		f = { "<cmd>AsyncTask file-run<cr>", "Run File" },
 		b = { "<cmd>AsyncTask file-build<cr>", "Build File" },
 		-- Need Makefile configed too in the project directory.
 		a = { "<cmd>AsyncTask project-build<cr>", "Build Projects" },
 		t = { "<cmd>AsyncTask project-run<cr>", "Run Projects" },
+
+		-- python tracing back quickfixlist configurations
+		-- c = { "<cmd>makeprg=python %<cr>", "Makeprg config" },
+		r = { "<cmd>lua _PYTHON_DEV()<cr>", "Python run" },
+		h = { "<cmd>lua _MODEL_PERF()<cr>", "Model perf " },
+		j = { "<cmd>lua _PYTHON_GO()<cr>", "Temp python" },
+		p = { "<cmd>compiler python<cr>", "Python compiler" },
+		c = { "<cmd>compiler pytest<cr>", "Pytest compiler" },
+		m = { "<cmd>make<cr>", "Make Run" },
 	},
 
   s = {
@@ -278,7 +316,7 @@ local mappings = {
   },
 
 	j = {
-		name = "harpoon&hop",
+		name = "harpoon&hop&zoxide",
 		w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hop Word" },
 		r = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hop Row" },
 		f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Patterns" },
@@ -300,6 +338,7 @@ local mappings = {
 		-- this just create a new tmux Terminal.
 		v = { "<cmd>Telescope harpoon marks<cr>", "View marks" },
 		t = { "<cmd>lua require 'harpoon.tmux'.gotoTerminal(1)<cr>", "Terminal" },
+		z = { "<cmd>Telescope zoxide list<cr>", "View directories" },
 		-- this doesn't work when using a down pane of the same window.
 	},
 }

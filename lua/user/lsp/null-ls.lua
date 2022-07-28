@@ -15,7 +15,9 @@ null_ls.setup({
     -- formatting.autopep8, --this works but you can you black
     formatting.black, -- this just need to use meicale's repo.
     formatting.stylua,
-    diagnostics.flake8
+    -- formatting.clang_format, --cland can formatting, too.
+    -- close it to avoid too many errors.LOL!
+    -- diagnostics.flake8
   },
 
 })

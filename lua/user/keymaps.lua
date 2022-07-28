@@ -100,6 +100,12 @@ vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').re
 -- zoom and rebalance the splites of nvim
 vim.api.nvim_set_keymap("n", "gm", [[ <Cmd>wincmd |<cr>]], {noremap = true, silent = true, expr = false})
 vim.api.nvim_set_keymap("n", "gM", [[ <Cmd>wincmd =<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgo", [[ <Cmd>copen<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgc", [[ <Cmd>cclose<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgj", [[ <Cmd>cnext<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgk", [[ <Cmd>cprev<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgf", [[ <Cmd>cfirst<cr>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "lgl", [[ <Cmd>clast<cr>]], {noremap = true, silent = true, expr = false})
 
 vim.cmd [[ 
 " https://github.com/preservim/vimux/issues/136

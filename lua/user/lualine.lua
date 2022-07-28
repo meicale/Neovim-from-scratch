@@ -95,4 +95,5 @@ lualine.setup({
 	},
 	tabline = {},
 	extensions = {},
+  theme = 'tokyonight',
 })

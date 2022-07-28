@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use { "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" }
   use { "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" }
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "octaltree/cmp-look"
 
   -- snippets
   use { "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" } --snippet engine
@@ -117,6 +118,17 @@ return packer.startup(function(use)
       })
     end,
   })
+
+  -- quickfixlist
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+  use { 'junegunn/fzf', run = function()
+    vim.fn['fzf#install']()
+  end
+  }
+
+  -- zoxide vim wrapper
+  use 'nanotee/zoxide.vim'
+  use 'jvgrootveld/telescope-zoxide'
 
   -- Treesitter
   use {
@@ -256,6 +268,8 @@ return packer.startup(function(use)
       { "nvim-treesitter/nvim-treesitter" },
     },
   })
+  use('python-rope/ropevim')
+
 
   use("ojroques/vim-oscyank")
 
@@ -268,8 +282,8 @@ return packer.startup(function(use)
   -- use({ "kevinhwang91/nvim-hlslens" })
   -- -- better * motions
   -- use("haya14busa/vim-asterisk")
-  -- -- visual-multi
-  -- -- use({ "mg979/vim-visual-multi", branch = "master" })
+  -- visual-multi
+  use({ "mg979/vim-visual-multi", branch = "master" })
 
   -- -- Orgmode in nvim
   -- use({
