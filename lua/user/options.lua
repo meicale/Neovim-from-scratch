@@ -66,6 +66,7 @@ vim.cmd [[let g:VM_leader = ";"]]
 
 vim.cmd [[
 let g:python_host_prog = '/usr/bin/python2'
+" let g:python3_host_prog = '/home/guanghua/.conda/envs/refactor_demo/bin/python'
 let g:python3_host_prog = '/home/guanghua/.conda/envs/aacd/bin/python'
 let test#strategy = {
   \ 'nearest': 'asyncrun',

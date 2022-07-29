@@ -285,6 +285,7 @@ return packer.startup(function(use)
   -- visual-multi
   use({ "mg979/vim-visual-multi", branch = "master" })
 
+  use {"ellisonleao/glow.nvim"}
   -- -- Orgmode in nvim
   -- use({
   -- 	"nvim-orgmode/orgmode",
