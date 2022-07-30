@@ -61,8 +61,17 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 -- let g:gh_use_canonical = 1
 -- ]]
 
--- https://github.com/mg979/vim-visual-multi/wiki/Mappings 
+-- https://github.com/mg979/vim-visual-multi/wiki/Mappings
 vim.cmd [[let g:VM_leader = ";"]]
+
+-- https://github.com/kevinhwang91/nvim-hlslens
+vim.cmd([[
+    aug VMlens
+        au!
+        au User visual_multi_start lua require('user.vmlens').start()
+        au User visual_multi_exit lua require('user.vmlens').exit()
+    aug END
+]])
 
 vim.cmd [[
 let g:python_host_prog = '/usr/bin/python2'

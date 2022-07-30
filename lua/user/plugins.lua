@@ -278,11 +278,11 @@ return packer.startup(function(use)
   -- use("liuchengxu/vista.vim")
   -- use("simnalamburt/vim-mundo")
 
-  -- -- Multi-operations
-  -- -- better matched information
-  -- use({ "kevinhwang91/nvim-hlslens" })
-  -- -- better * motions
-  -- use("haya14busa/vim-asterisk")
+  -- Multi-operations
+  -- better matched information
+  use({ "kevinhwang91/nvim-hlslens" })
+  -- better * motions
+  use("haya14busa/vim-asterisk")
   -- visual-multi
   use({ "mg979/vim-visual-multi", branch = "master" })
 

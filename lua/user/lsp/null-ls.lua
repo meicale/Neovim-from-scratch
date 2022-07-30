@@ -14,7 +14,7 @@ null_ls.setup({
     formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
     -- formatting.autopep8, --this works but you can you black
     formatting.black, -- this just need to use meicale's repo.
-    formatting.stylua,
+    -- formatting.stylua,
     -- formatting.clang_format, --cland can formatting, too.
     -- close it to avoid too many errors.LOL!
     -- diagnostics.flake8

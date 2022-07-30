@@ -107,6 +107,16 @@ vim.api.nvim_set_keymap("n", "lgk", [[ <Cmd>cprev<cr>]], {noremap = true, silent
 vim.api.nvim_set_keymap("n", "lgf", [[ <Cmd>cfirst<cr>]], {noremap = true, silent = true, expr = false})
 vim.api.nvim_set_keymap("n", "lgl", [[ <Cmd>clast<cr>]], {noremap = true, silent = true, expr = false})
 
+vim.api.nvim_set_keymap('n', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('n', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('n', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('n', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], {})
+
+vim.api.nvim_set_keymap('x', '*', [[<Plug>(asterisk-z*)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('x', '#', [[<Plug>(asterisk-z#)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('x', 'g*', [[<Plug>(asterisk-gz*)<Cmd>lua require('hlslens').start()<CR>]], {})
+vim.api.nvim_set_keymap('x', 'g#', [[<Plug>(asterisk-gz#)<Cmd>lua require('hlslens').start()<CR>]], {})
+
 vim.cmd [[ 
 " https://github.com/preservim/vimux/issues/136
 function! VimuxSlime()
