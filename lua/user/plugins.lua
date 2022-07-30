@@ -173,11 +173,7 @@ return packer.startup(function(use)
   use("unblevable/quick-scope")
   use({
     "phaazon/hop.nvim",
-    branch = "master", -- optional but strongly recommended
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-    end,
+    branch = 'v2',
   })
   -- Between buffer/file and terminal
   use("ThePrimeagen/harpoon")
@@ -268,8 +264,13 @@ return packer.startup(function(use)
       { "nvim-treesitter/nvim-treesitter" },
     },
   })
-  use('python-rope/ropevim')
 
+  use({
+    -- https://github.com/python-rope/ropevim
+    -- pip install rope ropemode ropevim # in the conda env you need.
+    'python-rope/ropevim',
+    ft = "python"
+  })
 
   use("ojroques/vim-oscyank")
 

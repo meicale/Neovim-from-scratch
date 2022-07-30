@@ -31,4 +31,3 @@ require "user.git-worktree"
 require "user.nvim-gps"
 require "user.refactoring"
 require "user.illuminate"
-

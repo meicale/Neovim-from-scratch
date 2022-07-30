@@ -4,3 +4,10 @@ if not status_ok then
   return
 end
 
+-- you can configure Hop the way you like here; see :h hop-config
+hop.setup({
+  -- keys = "etovxqpdygfblzhckisuran",
+  keys = "asdfjkl;ghtrewqyuiopvbcxznm",
+  multi_windows = true,
+  quit_key = '<SPC>',
+})
