@@ -285,6 +285,8 @@ local mappings = {
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+		q = { "<cmd>Telescope quickfix<cr>", "Quickfix to Telescope" },
+		l = { "<cmd>Telescope loclist<cr>", "loclist to Telescope" },
   },
 
 	t = {
@@ -296,13 +298,14 @@ local mappings = {
 		l = { "<cmd>UltestLast<cr>", "TestLast" },
 		d = { "<cmd>UltestDebug<cr>", "DebugFile" },
 		f = { "<cmd>UltestDebugNearest<cr>", "DebugNearest" },
-		t = { "<cmd>UltestAttach<cr>", "Attach" },
-		q = { "<cmd>Telescope quickfix<cr>", "Quickfix to Telescope" },
-		h = { "<cmd>Telescope loclist<cr>", "loclist to Telescope" },
+		-- t = { "<cmd>UltestAttach<cr>", "Attach" },
 		-- j = { "<cmd>lua require 'ultest'.ultest-next-fail<cr>", "NextFail" },
 		-- v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		u = { "<cmd>MundoToggle<cr>", "Views" },
 		v = { "<cmd>Vista!!<cr>", "Views" },
+    t = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+    i = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
 	},
 
   T = {
