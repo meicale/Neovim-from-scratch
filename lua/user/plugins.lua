@@ -31,6 +31,9 @@ end
 
 -- Have packer use a popup window
 packer.init {
+  git = {
+        default_url_format = 'git@github.com:%s'
+    },
   display = {
     open_fn = function()
       return require("packer.util").float { border = "rounded" }
@@ -175,6 +178,7 @@ return packer.startup(function(use)
     "phaazon/hop.nvim",
     branch = 'v2',
   })
+  use("ggandor/leap.nvim")
   -- Between buffer/file and terminal
   use("ThePrimeagen/harpoon")
   -- Between Neovim and Tmux navigation
@@ -211,50 +215,50 @@ return packer.startup(function(use)
     run = ":UpdateRemotePlugins",
   })
 
-  -- Debugging
-  use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
-  use({
-    "mfussenegger/nvim-dap",
-    -- opt = true,
-    commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d",
-    event = "BufReadPre",
-    module = { "dap" },
-    -- wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
-    requires = {
-      -- "Pocco81/DAPInstall.nvim",
-      -- "theHamsta/nvim-dap-virtual-text",
-      -- "rcarriga/nvim-dap-ui",
-      -- "mfussenegger/nvim-dap-python",
-      "nvim-telescope/telescope-dap.nvim",
-      -- { "leoluz/nvim-dap-go", module = "dap-go" },
-      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-    },
-    config = function()
-      require("dap").setup()
-      -- require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { cppdbg = {'c', 'cpp'} , python = 'py'})
-    end,
-  })
-  -- debug inline text
-  use({
-    "theHamsta/nvim-dap-virtual-text",
-    requires = {
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      require("user.dap.nvim-dap-virtual-text")
-    end,
-  })
-  -- debug UI
-  use({
-    "rcarriga/nvim-dap-ui",
-    commit = "d76d6594374fb54abf2d94d6a320f3fd6e9bb2f7",
-    requires = {
-      "mfussenegger/nvim-dap",
-    },
-    config = function()
-      require("user.dap.nvim-dap-ui")
-    end,
-  })
+--  -- Debugging
+--  use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
+--  use({
+--    "mfussenegger/nvim-dap",
+--    -- opt = true,
+--    commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d",
+--    event = "BufReadPre",
+--    module = { "dap" },
+--    -- wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+--    requires = {
+--      -- "Pocco81/DAPInstall.nvim",
+--      -- "theHamsta/nvim-dap-virtual-text",
+--      -- "rcarriga/nvim-dap-ui",
+--      -- "mfussenegger/nvim-dap-python",
+--      "nvim-telescope/telescope-dap.nvim",
+--      -- { "leoluz/nvim-dap-go", module = "dap-go" },
+--      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+--    },
+--    config = function()
+--      require("dap").setup()
+--      -- require('dap.ext.vscode').load_launchjs('.vscode/launch.json', { cppdbg = {'c', 'cpp'} , python = 'py'})
+--    end,
+--  })
+--  -- debug inline text
+--  use({
+--    "theHamsta/nvim-dap-virtual-text",
+--    requires = {
+--      "mfussenegger/nvim-dap",
+--    },
+--    config = function()
+--      require("user.dap.nvim-dap-virtual-text")
+--    end,
+--  })
+--  -- debug UI
+--  use({
+--    "rcarriga/nvim-dap-ui",
+--    commit = "d76d6594374fb54abf2d94d6a320f3fd6e9bb2f7",
+--    requires = {
+--      "mfussenegger/nvim-dap",
+--    },
+--    config = function()
+--      require("user.dap.nvim-dap-ui")
+--    end,
+--  })
 
   -- refactoring -- Under test, not quite useful
   use({
@@ -287,6 +291,7 @@ return packer.startup(function(use)
   use({ "mg979/vim-visual-multi", branch = "master" })
 
   use {"ellisonleao/glow.nvim"}
+  use {"brglng/vim-im-select"}
   -- -- Orgmode in nvim
   -- use({
   -- 	"nvim-orgmode/orgmode",

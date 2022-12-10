@@ -34,8 +34,9 @@ endtry
 --    set termguicolors
 --  endif
 --  ]]
--- It is cool but I just like gruvbox
--- https://github.com/folke/tokyonight.nvim/blob/main/extras/tmux_tokyonight_storm.tmux
+
+-- -- It is cool but I just like gruvbox
+-- -- https://github.com/folke/tokyonight.nvim/blob/main/extras/tmux_tokyonight_storm.tmux
 -- -- Example config in Lua
 -- vim.g.tokyonight_style = "storm"
 -- vim.g.tokyonight_italic_functions = true
