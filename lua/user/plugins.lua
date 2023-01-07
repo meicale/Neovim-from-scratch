@@ -63,6 +63,10 @@ return packer.startup(function(use)
 	-- Colorschemes
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
   use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
+  use {"sainnhe/gruvbox-material"}
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use {"rebelot/kanagawa.nvim"}
+  use {"EdenEast/nightfox.nvim"} 
 
 	-- Cmp 
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
@@ -91,6 +95,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac",
 	}
+  use {'David-Kunz/markid'}
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
@@ -104,6 +109,7 @@ return packer.startup(function(use)
     branch = 'v2',
   })
   use("ggandor/leap.nvim")
+  use("machakann/vim-sandwich")
   -- Between buffer/file and terminal
 
   -- others
