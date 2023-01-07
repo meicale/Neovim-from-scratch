@@ -107,7 +107,14 @@ local mappings = {
 
   g = {
     name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		f = { "<cmd>Git<CR>", "fugitive" },
+		d = { "<cmd>Git diff<CR>", "diff" },
+		["3"] = { "<cmd>Gvdiffsplit！<CR>", "conflicts 3-way" },
+		t = { "<cmd>Git commit<CR>", "commit" },
+		e = { "<cmd>Git rebase -i<CR>", "rebase -i" },
+		h = { "<cmd>diffget //3<CR>", "keep_right" },
+		g = { "<cmd>diffget //2<CR>", "keep_left" },
+    z = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
     k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -122,11 +129,38 @@ local mappings = {
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
-      "Diff",
-    },
+    -- d = {
+    --   "<cmd>Gitsigns diffthis HEAD<cr>",
+    --   "Diff",
+    -- },
   },
+
+  j = {
+		name = "harpoon&hop&zoxide",
+		-- w = { "<cmd>lua require 'hop'.hint_words()<cr>", "Hop Word" },
+		-- r = { "<cmd>lua require 'hop'.hint_lines()<cr>", "Hop Row" },
+		-- f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Patterns" },
+		q = { "<cmd>QuickScopeToggle<CR>", "Toggle QuickScope" },
+
+		h = { "<cmd>lua require 'harpoon.mark'.add_file()<cr>", "Harpoon Highlight" },
+		l = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Harpoon List" },
+		j = { "<cmd>lua require 'harpoon.ui'.nav_next()<cr>", "Next File" },
+		k = { "<cmd>lua require 'harpoon.ui'.nav_prev()<cr>", "Prev File" },
+		g = { "<cmd>lua require 'harpoon.ui'.nav_file(1)<cr>", "First File" },
+		a = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "2nd File" },
+		s = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "3rd File" },
+		d = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "4th File" },
+		["5"] = { "<cmd>lua require 'harpoon.ui'.nav_file(5)<cr>", "5th File" },
+		["6"] = { "<cmd>lua require 'harpoon.ui'.nav_file(6)<cr>", "6th File" },
+		["7"] = { "<cmd>lua require 'harpoon.ui'.nav_file(7)<cr>", "7th File" },
+		["8"] = { "<cmd>lua require 'harpoon.ui'.nav_file(8)<cr>", "8th File" },
+		["9"] = { "<cmd>lua require 'harpoon.ui'.nav_file(9)<cr>", "9th File" },
+		-- this just create a new tmux Terminal.
+		v = { "<cmd>Telescope harpoon marks<cr>", "View marks" },
+		t = { "<cmd>lua require 'harpoon.tmux'.gotoTerminal(1)<cr>", "Terminal" },
+		z = { "<cmd>Telescope zoxide list<cr>", "View directories" },
+		-- this doesn't work when using a down pane of the same window.
+	},
 
   l = {
     name = "LSP",

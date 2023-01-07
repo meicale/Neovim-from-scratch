@@ -19,3 +19,17 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+
+-- -- added by gh below
+require "user.harpoon"
+require "user.hop"
+require "user.leap"
+require "user.quickscope"
+require "user.im-select"
+require "user.chatgpt"
+require "user.betterescape"
+require "user.nvim-gps"
+require "user.nvim-hlslens"
+-- require "user.neoclip"
+-- require "user.asyncrun"
+
