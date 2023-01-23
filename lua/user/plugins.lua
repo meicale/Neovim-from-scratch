@@ -130,6 +130,17 @@ return packer.startup(function(use)
   })
 
   use({ "kevinhwang91/nvim-hlslens" })
+  use {
+  'phaazon/mind.nvim',
+  branch = 'v2.2',
+  requires = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    require'mind'.setup()
+  end
+  }
+  use {'stevearc/dressing.nvim'}
+  use {'Exafunction/codeium.vim'}
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

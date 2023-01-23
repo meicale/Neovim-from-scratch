@@ -13,15 +13,7 @@ vim.g.im_select_default = "1033"
 vim.g.im_select_enable_focus_events = 0
 
 
-  -- augroup illuminate_augroup
-  --     autocmd!
-  --     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
-  -- augroup END
-
-
--- vim.cmd [[
-
-local augroup = vim.api.nvim_create_augroup
+-- local cursorGrp = vim.api.nvim_create_augroup
 vim.api.nvim_create_autocmd("InsertEnter", {
 	pattern = "*",
 	command = 'silent exec "!(/mnt/i/Win_User/rime_user/im-select.exe) &"',
@@ -34,5 +26,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
  	group = cursorGrp,
 })
 
--- ]]
+vim.cmd [[
+  augroup illuminate_augroup
+      autocmd!
+      autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+  augroup END
+]]
 
