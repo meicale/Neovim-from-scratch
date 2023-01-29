@@ -92,3 +92,18 @@ vim.api.nvim_set_keymap('o', 'jf', "<cmd> lua require'hop'.hint_patterns({ hint_
 vim.api.nvim_set_keymap('n', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
 vim.api.nvim_set_keymap('v', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
 vim.api.nvim_set_keymap('o', 'jt', "<cmd> lua require'tsht'.nodes()<cr>", {})
+
+vim.keymap.set({'n'}, 'hw', function ()
+  vim.cmd([[normal! mm]])
+  -- require'tsht'.nodes()
+  vim.cmd([[:HopWord]])
+  vim.schedule(function ()
+    vim.cmd([[normal! yiw]])
+    vim.cmd([[normal! `mp]])
+  end)
+end, {noremap = true, silent = true})
+-- https://github.com/Exafunction/codeium.vim
+vim.keymap.set('i', '<m-;>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+vim.keymap.set('i', '<m-]>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+vim.keymap.set('i', '<m-[>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+vim.keymap.set('i', '<m-l>', function() return vim.fn['codeium#Clear']() end, { expr = true })

@@ -66,7 +66,7 @@ return packer.startup(function(use)
   use {"sainnhe/gruvbox-material"}
   use { "catppuccin/nvim", as = "catppuccin" }
   use {"rebelot/kanagawa.nvim"}
-  use {"EdenEast/nightfox.nvim"} 
+  use {"EdenEast/nightfox.nvim"}
 
 	-- Cmp 
   use { "hrsh7th/nvim-cmp", commit = "b0dff0ec4f2748626aae13f011d1a47071fe9abc" } -- The completion plugin
@@ -110,6 +110,7 @@ return packer.startup(function(use)
   })
   use("ggandor/leap.nvim")
   use("machakann/vim-sandwich")
+  use ("mfussenegger/nvim-treehopper")
   -- Between buffer/file and terminal
 
   -- others
@@ -138,9 +139,33 @@ return packer.startup(function(use)
     require'mind'.setup()
   end
   }
+
   use {'stevearc/dressing.nvim'}
   use {'Exafunction/codeium.vim'}
+  use {
+    "tjdevries/sg.nvim",
+    run =  function()
+      -- "cargo build --workspace"
+      print("you should build the plugin bin mamually by running 'cargo build --workspace' in the plugin directery")
+      print("sg.nvim builded")
+    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+  }
 
+  -- filetype plugin
+  use {'lervag/vimtex'}
+  use {
+  "iurimateus/luasnip-latex-snippets.nvim",
+  branch = 'markdown',
+  -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
+  -- using treesitter.
+  requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+  config = function()
+    require'luasnip-latex-snippets'.setup()
+    -- or setup({ use_treesitter = true })
+  end,
+  ft ={"markdown","tex"},
+  }
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
