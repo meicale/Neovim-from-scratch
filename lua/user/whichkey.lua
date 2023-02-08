@@ -163,7 +163,7 @@ local mappings = {
 	},
 
   l = {
-    name = "LSP",
+    name = "LSP & Latex",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
       "<cmd>Telescope diagnostics bufnr=0<cr>",
@@ -192,7 +192,10 @@ local mappings = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
+    c = { "<cmd>VimtexCompile<cr>", "Tex Compile" },
+    v = { "<cmd>VimtexView<cr>", "Tex PDF Preview" },
   },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -203,6 +206,8 @@ local mappings = {
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+    n = { "<cmd>Telescope find_files cwd=~/.config/nvim<cr>", "NVim config" },
+    l = { "<cmd>Telescope live_grep cwd=~/workspace/log<cr>", "find logfile" },
   },
 
   t = {

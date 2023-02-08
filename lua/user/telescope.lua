@@ -3,6 +3,10 @@ if not status_ok then
   return
 end
 
+-- Load the extension
+telescope.load_extension('zoxide')
+
+local z_utils = require("telescope._extensions.zoxide.utils")
 local actions = require "telescope.actions"
 
 telescope.setup {
@@ -91,6 +95,22 @@ telescope.setup {
     -- extension_name = {
     --   extension_config_key = value,
     -- }
-    -- please take a look at the readme of the extension you want to configure
+     zoxide = {
+      prompt_title = "[ Walking on the shoulders of TJ ]",
+      mappings = {
+        default = {
+          after_action = function(selection)
+            print("Update to (" .. selection.z_score .. ") " .. selection.path)
+          end
+        },
+        ["<C-s>"] = {
+          before_action = function(selection) print("before C-s") end,
+          action = function(selection)
+            vim.cmd("edit " .. selection.path)
+          end
+        },
+        ["<C-q>"] = { action = z_utils.create_basic_command("split") },
+      },
+    },   -- please take a look at the readme of the extension you want to configure
   },
 }

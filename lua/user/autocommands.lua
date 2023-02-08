@@ -28,6 +28,11 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  augroup _vimtex_events
+  autocmd!
+  autocmd User VimtexEventViewReverse call b:vimtex.viewer.xdo_focus_vim()
+  augroup end
 ]]
 
 -- Autoformat

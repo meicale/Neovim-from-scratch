@@ -48,3 +48,15 @@ vim.opt.iskeyword:append "-"                           -- hyphenated words recog
 vim.opt.formatoptions:remove({ "c", "r", "o" })        -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")  -- separate vim plugins from neovim in case vim still in use
 
+vim.cmd[[
+  " let g:tex_flavor= 'latex'    
+  "使vimtex默认xelatex为编译器
+  let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
+  let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
+  "使vimtex默认sioyek为pdf阅读器
+  let g:vimtex_view_method= 'sioyek'
+  " let g:vimtex_view_method= 'zathura' "设置这个之后会导致无法直接打开软件预览
+  "设置可以看到编译提示
+  let g:vimtex_quickfix_mode=1
+
+]]

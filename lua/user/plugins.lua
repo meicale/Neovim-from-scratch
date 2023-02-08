@@ -8,7 +8,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"clone",
 		"--depth",
 		"1",
-		"https://github.com/wbthomason/packer.nvim",
+		"git@github.com:wbthomason/packer.nvim.git",
 		install_path,
 	})
 	print("Installing packer close and reopen Neovim...")
@@ -89,6 +89,8 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
+  use {"nvim-lua/popup.nvim"}
+  use {"jvgrootveld/telescope-zoxide"}
 
 	-- Treesitter
 	use {
@@ -112,6 +114,42 @@ return packer.startup(function(use)
   use("machakann/vim-sandwich")
   use ("mfussenegger/nvim-treehopper")
   -- Between buffer/file and terminal
+
+  -- -- Debugging
+  -- use {
+  --   "mfussenegger/nvim-dap",
+  --   opt = true,
+  --   -- event = "BufReadPre",
+  --   keys = { [[<leader>d]] },
+  --   module = { "dap" },
+  --   wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+  --   requires = {
+  --     "alpha2phi/DAPInstall.nvim",
+  --     -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "rcarriga/nvim-dap-ui",
+  --     "mfussenegger/nvim-dap-python",
+  --     "nvim-telescope/telescope-dap.nvim",
+  --     -- { "leoluz/nvim-dap-go", module = "dap-go" },
+  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+  --   },
+  --   config = function()
+  --     require("user.dap").setup()
+  --   -- end,
+  --   -- disable = false,
+  -- }
+
+  use {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("user.dap").setup()
+    end,
+    disable = false,
+  }
+  use ('mfussenegger/nvim-dap-python')
+  use ('alpha2phi/DAPInstall.nvim')
+  use ('theHamsta/nvim-dap-virtual-text')
+  use ('rcarriga/nvim-dap-ui')
 
   -- others
   use({
