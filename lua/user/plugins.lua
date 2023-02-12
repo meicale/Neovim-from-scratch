@@ -115,30 +115,8 @@ return packer.startup(function(use)
   use ("mfussenegger/nvim-treehopper")
   -- Between buffer/file and terminal
 
-  -- -- Debugging
-  -- use {
-  --   "mfussenegger/nvim-dap",
-  --   opt = true,
-  --   -- event = "BufReadPre",
-  --   keys = { [[<leader>d]] },
-  --   module = { "dap" },
-  --   wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
-  --   requires = {
-  --     "alpha2phi/DAPInstall.nvim",
-  --     -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
-  --     "theHamsta/nvim-dap-virtual-text",
-  --     "rcarriga/nvim-dap-ui",
-  --     "mfussenegger/nvim-dap-python",
-  --     "nvim-telescope/telescope-dap.nvim",
-  --     -- { "leoluz/nvim-dap-go", module = "dap-go" },
-  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-  --   },
-  --   config = function()
-  --     require("user.dap").setup()
-  --   -- end,
-  --   -- disable = false,
-  -- }
-
+  -- https://alpha2phi.medium.com/neovim-for-beginners-python-remote-debugging-7dac13e2a469
+  -- https://github.com/alpha2phi/neovim-for-beginner/blob/44-dap-docker/lua/config/dap/python.lua
   use {
     "mfussenegger/nvim-dap",
     config = function()
@@ -151,6 +129,27 @@ return packer.startup(function(use)
   use ('theHamsta/nvim-dap-virtual-text')
   use ('rcarriga/nvim-dap-ui')
 
+  -- remote
+  use {
+  'chipsenkbeil/distant.nvim',
+  branch = 'v0.2',
+  config = function()
+    require('distant').setup {
+      -- Applies Chip's personal settings to every machine you connect to
+      --
+      -- 1. Ensures that distant servers terminate with no connections
+      -- 2. Provides navigation bindings for remote directories
+      -- 3. Provides keybinding to jump into a remote file's parent directory
+      ['*'] = require('distant.settings').chip_default()
+    }
+  end
+  }
+  use {
+  'https://codeberg.org/esensar/nvim-dev-container',
+  requires = { 'nvim-treesitter/nvim-treesitter' }
+  }
+
+  
   -- others
   use({
     "jackMort/ChatGPT.nvim",
@@ -204,6 +203,28 @@ return packer.startup(function(use)
   end,
   ft ={"markdown","tex"},
   }
+
+  use {
+    "nvim-neorg/neorg",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.norg.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/workspace/inbox",
+                        },
+                    },
+                },
+            },
+        }
+    end,
+    run = ":Neorg sync-parsers",
+    requires = "nvim-lua/plenary.nvim",
+  }
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

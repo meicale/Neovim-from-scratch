@@ -33,6 +33,7 @@ require "user.vim-sandwich"
 require "user.dressing"
 require "user.sg"
 require "user.dap"
+require "user.devcontainer"
 -- require "user.markid" -- this look not very good
 -- require "user.neoclip"
 -- require "user.asyncrun"
