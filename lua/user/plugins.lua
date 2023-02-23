@@ -113,8 +113,40 @@ return packer.startup(function(use)
   use("ggandor/leap.nvim")
   use("machakann/vim-sandwich")
   use ("mfussenegger/nvim-treehopper")
+  use ({"mg979/vim-visual-multi", branch = 'master'})
+  use {
+    'LukasPietzschmann/telescope-tabs',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require'telescope-tabs'.setup{
+        -- Your custom config :^)
+      }
+    end
+  }
   -- Between buffer/file and terminal
 
+  -- test
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
+  use ("nvim-neotest/neotest-plenary")
+  use ("nvim-neotest/neotest-python")
+  use ("nvim-neotest/neotest-vim-test")
+  use { -- pytrize {{{
+    'AckslD/nvim-pytrize.lua',
+    -- uncomment if you want to lazy load
+    -- cmd = {'Pytrize', 'PytrizeClear', 'PytrizeJump'},
+    -- uncomment if you want to lazy load but not use the commands
+    -- module = 'pytrize',
+    -- config = 'require("pytrize").setup()',
+  } -- }}}
+
+  -- debug
   -- https://alpha2phi.medium.com/neovim-for-beginners-python-remote-debugging-7dac13e2a469
   -- https://github.com/alpha2phi/neovim-for-beginner/blob/44-dap-docker/lua/config/dap/python.lua
   use {
@@ -215,7 +247,9 @@ return packer.startup(function(use)
                     config = {
                         workspaces = {
                             notes = "~/workspace/inbox",
+                            log = "~/workspace/log",
                         },
+                        defalt_workspace = "notes",
                     },
                 },
             },

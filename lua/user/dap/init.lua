@@ -61,6 +61,4 @@ function M.setup()
   require("user.dap.keymaps").setup() -- Keymaps
 end
 
-configure_debuggers()
-
 return M

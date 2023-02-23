@@ -142,6 +142,10 @@ local mappings = {
 		-- f = { "<cmd>lua require 'hop'.hint_patterns()<cr>", "Hop Patterns" },
 		q = { "<cmd>QuickScopeToggle<CR>", "Toggle QuickScope" },
 
+		f = { "<cmd>lua require('neotest').jump.next({ status = 'failed' })<CR>", "Next Failed test" },
+		F = { "<cmd>lua require('neotest').jump.prev({ status = 'failed' })<CR>", "Previous Failed test" },
+		x = { "<cmd>PytrizeJumpFixture<cr>", "Jump Fixture Definition" },
+
 		h = { "<cmd>lua require 'harpoon.mark'.add_file()<cr>", "Harpoon Highlight" },
 		l = { "<cmd>lua require 'harpoon.ui'.toggle_quick_menu()<cr>", "Harpoon List" },
 		j = { "<cmd>lua require 'harpoon.ui'.nav_next()<cr>", "Next File" },
@@ -150,6 +154,7 @@ local mappings = {
 		a = { "<cmd>lua require 'harpoon.ui'.nav_file(2)<cr>", "2nd File" },
 		s = { "<cmd>lua require 'harpoon.ui'.nav_file(3)<cr>", "3rd File" },
 		d = { "<cmd>lua require 'harpoon.ui'.nav_file(4)<cr>", "4th File" },
+
 		["5"] = { "<cmd>lua require 'harpoon.ui'.nav_file(5)<cr>", "5th File" },
 		["6"] = { "<cmd>lua require 'harpoon.ui'.nav_file(6)<cr>", "6th File" },
 		["7"] = { "<cmd>lua require 'harpoon.ui'.nav_file(7)<cr>", "7th File" },
@@ -157,6 +162,8 @@ local mappings = {
 		["9"] = { "<cmd>lua require 'harpoon.ui'.nav_file(9)<cr>", "9th File" },
 		-- this just create a new tmux Terminal.
 		v = { "<cmd>Telescope harpoon marks<cr>", "View marks" },
+		b = { "<cmd>BufferLinePick<cr>", "Jump choosen uffer" },
+		B = { "<cmd>BufferLinePickClose<cr>", "Close choosen buffer" },
 		t = { "<cmd>lua require 'harpoon.tmux'.gotoTerminal(1)<cr>", "Terminal" },
 		z = { "<cmd>Telescope zoxide list<cr>", "View directories" },
 		-- this doesn't work when using a down pane of the same window.
@@ -199,6 +206,8 @@ local mappings = {
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    f = { "<cmd>Telescope buffers<cr>", "Find Buffers" },
+    t = { "<cmd>lua require('telescope-tabs').list_tabs()<cr>", "Find Tabs" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
@@ -211,15 +220,24 @@ local mappings = {
   },
 
   t = {
-    name = "Terminal",
-    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+    name = "Terminal & Test",
+    -- n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
+    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU Terminal" },
+    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop Terminal" },
+    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python Terminal" },
+    i = { "<cmd>ToggleTerm direction=float<cr>", "Float Terminal" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal Terminal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical Terminal" },
+    s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" },
+    n = { "<cmd>lua require('neotest').run.run()<cr>", "Test Neareast" },
+    l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Test Last" },
+    d = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
+    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test File" },
   },
+  d = {
+    name = "Debug",
+    y = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test Neareast" },
+  }
 }
 
 which_key.setup(setup)
