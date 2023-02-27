@@ -86,6 +86,7 @@ return packer.startup(function(use)
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
 	use { "jose-elias-alvarez/null-ls.nvim"} -- for formatters and linters
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
+  use {'lspcontainers/lspcontainers.nvim'}
 
 	-- Telescope
 	use { "nvim-telescope/telescope.nvim", commit = "76ea9a898d3307244dce3573392dcf2cc38f340f" }
@@ -123,7 +124,17 @@ return packer.startup(function(use)
       }
     end
   }
+
   -- Between buffer/file and terminal
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  -- optional
+  use {'junegunn/fzf', run = function()
+      vim.fn['fzf#install']()
+  end
+  }
+  -- optional, highly recommended
+  -- use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  
 
   -- test
   use {
@@ -181,7 +192,10 @@ return packer.startup(function(use)
   requires = { 'nvim-treesitter/nvim-treesitter' }
   }
 
-  
+  -- terminal and task
+  use ({"skywind3000/asyncrun.vim"})
+
+
   -- others
   use({
     "jackMort/ChatGPT.nvim",

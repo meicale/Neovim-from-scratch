@@ -33,6 +33,7 @@ vim.cmd [[
   autocmd!
   autocmd User VimtexEventViewReverse call b:vimtex.viewer.xdo_focus_vim()
   augroup end
+  
 ]]
 
 -- Autoformat
@@ -40,3 +41,11 @@ vim.cmd [[
 --   autocmd!
 --   autocmd BufWritePre * lua vim.lsp.buf.formatting()
 -- augroup end
+
+
+-- augroup _neotest_on_save
+-- autocmd!
+-- " autocmd BufWritePost  * lua  require('neotest').run.run_last() 
+-- autocmd BufWritePost *.py AsyncRun -cwd=$(VIM_FILEDIR) python "$(VIM_FILEPATH)"
+-- augroup end
+  

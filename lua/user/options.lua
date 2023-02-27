@@ -60,3 +60,6 @@ vim.cmd[[
   let g:vimtex_quickfix_mode=1
 
 ]]
+
+vim.g.neovide_cursor_vfx_mode = "railgun" -- for neovide gui setting
+vim.g.neovide_fullscreen = false
