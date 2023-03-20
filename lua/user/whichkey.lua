@@ -93,6 +93,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
+  ["y"] = { "<cmd>set filetype=python<CR>", "Set Python filetype" },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
@@ -108,8 +109,12 @@ local mappings = {
   g = {
     name = "Git",
 		f = { "<cmd>Git<CR>", "fugitive" },
+		n = { "<cmd>Neogit<CR>", "Neogit" },
 		d = { "<cmd>Git diff<CR>", "diff" },
-		["3"] = { "<cmd>Gvdiffsplit！<CR>", "conflicts 3-way" },
+		v = { "<cmd>DiffviewOpen<CR>", "diffview open" },
+		a = { "<cmd>DiffviewRefresh<CR>", "diffview fresh" },
+		x = { "<cmd>DiffviewClose<CR>", "diffview close" },
+		['3'] = { "<cmd>Gvdiffsplit!<CR>", "conflicts 3-way" },
 		t = { "<cmd>Git commit<CR>", "commit" },
 		e = { "<cmd>Git rebase -i<CR>", "rebase -i" },
 		h = { "<cmd>diffget //3<CR>", "keep_right" },
@@ -129,10 +134,8 @@ local mappings = {
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    -- d = {
-    --   "<cmd>Gitsigns diffthis HEAD<cr>",
-    --   "Diff",
-    -- },
+    w = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees() <cr>", "Git worktrees" },
+    q = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "Git Create worktrees" },
   },
 
   j = {
@@ -203,6 +206,17 @@ local mappings = {
     v = { "<cmd>VimtexView<cr>", "Tex PDF Preview" },
   },
 
+  r = {
+    name = "Run",
+    -- This should match async run & task config
+    -- https://github.com/skywind3000/asynctasks.vim/blob/master/README-cn.md 
+    d = { "<cmd>AsyncTask docker-run<cr>", "Current File Docker" },
+    e = { "<cmd>AsyncTask errorformat<cr>", "Test Errorformat" },
+    f = { "<cmd>AsyncTask file-run<cr>", "Run Current File" },
+    g = { "<cmd>AsyncTask grep<cr>", "Grep in project" },
+    s = { "<cmd>source %<cr>", "Grep in project" },
+  },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -216,7 +230,10 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     n = { "<cmd>Telescope find_files cwd=~/.config/nvim<cr>", "NVim config" },
+    N = { "<cmd>Telescope live_grep cwd=~/.config/nvim<cr>", "NVim config" },
     l = { "<cmd>Telescope live_grep cwd=~/workspace/log<cr>", "find logfile" },
+    L = { "<cmd>AsyncTask grep-log<cr>", "grep log file" },
+    w = { "<cmd>AsyncTask grep-cword<cr>", "grep current word" },
   },
 
   t = {

@@ -103,6 +103,14 @@ return packer.startup(function(use)
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
   use("tpope/vim-fugitive")
+  use { "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+  use ('ThePrimeagen/git-worktree.nvim')
+
 
   -- MOTION
   -- In nvim buffer in sight
@@ -176,16 +184,6 @@ return packer.startup(function(use)
   use {
   'chipsenkbeil/distant.nvim',
   branch = 'v0.2',
-  config = function()
-    require('distant').setup {
-      -- Applies Chip's personal settings to every machine you connect to
-      --
-      -- 1. Ensures that distant servers terminate with no connections
-      -- 2. Provides navigation bindings for remote directories
-      -- 3. Provides keybinding to jump into a remote file's parent directory
-      ['*'] = require('distant.settings').chip_default()
-    }
-  end
   }
   use {
   'https://codeberg.org/esensar/nvim-dev-container',
@@ -194,6 +192,7 @@ return packer.startup(function(use)
 
   -- terminal and task
   use ({"skywind3000/asyncrun.vim"})
+  use ({"skywind3000/asynctasks.vim"})
 
 
   -- others
@@ -225,13 +224,13 @@ return packer.startup(function(use)
 
   use {'stevearc/dressing.nvim'}
   use {'Exafunction/codeium.vim'}
+
   use {
     "tjdevries/sg.nvim",
-    run =  function()
-      -- "cargo build --workspace"
-      print("you should build the plugin bin mamually by running 'cargo build --workspace' in the plugin directery")
-      print("sg.nvim builded")
-    end,
+    run =  "cargo build --workspace",
+    -- run =  function()
+    --   vim.fn.system('cargo', 'build', '--workspace') 
+    -- end,
     dependencies = { "nvim-lua/plenary.nvim" },
   }
 

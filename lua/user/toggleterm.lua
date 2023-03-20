@@ -28,7 +28,8 @@ toggleterm.setup({
 
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<esc><esc>", [[<C-\><C-o>:ToggleTerm<CR>]], { noremap = true })
+  -- vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
@@ -68,3 +69,23 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
+
+-- this doesn't work
+-- vim.api.nvim_create_user_command("ToggleTermSendCurrentLineNoTrim",
+--   function(opts)
+--     send_term("single_line", false, opts.args)
+--   end,
+--   { nargs = "?", force = true }
+-- )
+-- vim.api.nvim_create_user_command("ToggleTermSendVisualSelectionNoTrim",
+--   function(opts)
+--     send_term("visual_selection", false, opts.args)
+--   end,
+--   { range = true, nargs = "?", force = true }
+-- )
+-- vim.api.nvim_create_user_command("ToggleTermSendVisualLinesNoTrim",
+--   function(opts)
+--     send_term("visual_lines", false, opts.args)
+--   end,
+--   { range = true, nargs = "?", force = true }
+-- )

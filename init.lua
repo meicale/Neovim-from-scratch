@@ -36,8 +36,13 @@ require "user.dap"
 require "user.devcontainer"
 require "user.neotest"
 require "user.pytrize"
+require "user.distant"
+require "user.markid" -- this look not very good
+require "user.neogit"
+require "user.diffview"
+require "user.gitlinker"
 
--- require "user.markid" -- this look not very good
+-- require "user.gist"
 -- require "user.neoclip"
 -- require "user.asyncrun"
 

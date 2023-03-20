@@ -36,6 +36,8 @@ local options = {
   sidescrolloff = 8,                       -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
   whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
+  spelllang = "en_us",                     -- the language to use for spell checking
+  spell = true,                            -- enable spell checking   -- :setlocal spell spelllang=en_us to set manully
 }
 
 for k, v in pairs(options) do
@@ -58,7 +60,8 @@ vim.cmd[[
   " let g:vimtex_view_method= 'zathura' "设置这个之后会导致无法直接打开软件预览
   "设置可以看到编译提示
   let g:vimtex_quickfix_mode=1
-
+  " https://github.com/skywind3000/asynctasks.vim/blob/master/README-cn.md
+  let g:asyncrun_open = 6
 ]]
 
 vim.g.neovide_cursor_vfx_mode = "railgun" -- for neovide gui setting
